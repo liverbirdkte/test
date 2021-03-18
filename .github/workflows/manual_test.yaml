@@ -1,0 +1,14 @@
+name: manual-job
+on:
+  workflow_dispatch:
+    inputs:
+      istio_version:
+        description: 'istio version'
+        required: true
+        default: '1.9'
+jobs:
+  echo-istio-version:
+    runs-on: [self-hosted, linux]
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "Version ${{ github.event.inputs.istio_version }}"
